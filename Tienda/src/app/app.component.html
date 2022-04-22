@@ -1,0 +1,21 @@
+<div class="container">
+  <select name="color" id="color">
+    <option value="r">Rojo</option>
+    <option value="a">Azul</option>
+    <option value="v">Verde</option>
+  </select>
+
+  <br><br>
+  <input type="button" (click)="busqueda()" value="Buscar">
+  <table border="1" *ngIf="productos.length > 0">
+    <thead><tr><th>Producto</th><th>Precio</th><th>Stock</th></tr></thead>
+    <tbody >
+      <tr *ngFor="let p of productos">
+        <td>{{p.nombre}}</td><td>{{p.precio}}</td><td>{{p.stock}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <br> <br>
+  <a href="inicio.jsp">Volver</a>

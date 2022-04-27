@@ -1,5 +1,6 @@
+<%@page import="model.Producto"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.Alumno,java.util.ArrayList"%>
+    pageEncoding="ISO-8859-1" import="model.Producto,java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,13 @@
 </head>
 <body>
 	<%
-	ArrayList<Alumno> productos=(ArrayList<Alumno>)request.getAttribute("productos");
+	ArrayList<Producto> productos=(ArrayList<Producto>)request.getAttribute("productos");
 	%>
 	<center>
 		<table border='1'><tr><th>Nombre</th><th>Precio</th><th>Stock</th></tr>
 			<%
 			for(int i=0;i<productos.size();i++) {
-					Alumno pd=productos.get(i);
+					Producto pd=productos.get(i);
 			%>
 				<tr><td><%=pd.getNombre()%></td><td><%=pd.getPrecio() %></td><td><%=pd.getStock() %></td></tr>	
 			<%}%>

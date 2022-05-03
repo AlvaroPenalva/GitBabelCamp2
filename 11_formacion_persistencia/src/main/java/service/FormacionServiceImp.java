@@ -48,7 +48,6 @@ public class FormacionServiceImp implements FormacionService {
 		return ad.findByCurso(nombre);
 	}
 
-	@Transactional
 	@Override
 	public boolean matriculaAlumno(String usuario, int idCurso) {
 		Alumno auxA = buscarAlumno(usuario);

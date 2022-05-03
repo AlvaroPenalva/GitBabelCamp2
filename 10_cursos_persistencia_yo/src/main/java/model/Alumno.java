@@ -23,7 +23,6 @@ import lombok.Setter;
 @Entity
 public class Alumno {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String dni;
 	private String nombre;
 	private int edad;

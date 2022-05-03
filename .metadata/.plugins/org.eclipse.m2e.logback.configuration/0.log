@@ -3966,3 +3966,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact antlr:antlr:j
 2022-05-03 13:49:18,008 [Worker-70: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2022-05-03 13:49:18,009 [Worker-70: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\alvaro.penalva\Documents\BabelCamp\Ejercicios2\11_formacion_persistencia\src\main\resources
 2022-05-03 13:49:18,010 [Worker-70: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-05-03 13:49:18,011 [Worker-70: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\alvaro.penalva\Documents\BabelCamp\Ejercicios2\11_formacion_persistencia\src\test\resources

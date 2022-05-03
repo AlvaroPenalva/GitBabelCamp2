@@ -1,0 +1,21 @@
+<div class="container">
+
+    <select [(ngModel)]="cursoActual">
+      <option  name="cursos" id="cursos"  *ngFor="let c of cursos" value="{{c.nombre}}">{{c.nombre}}</option>
+    </select>
+    <br><br>
+    
+    <input type="button" (click)="busqueda()" value="Buscar">
+    <table border="1" *ngIf="alumnos.length > 0">
+      <thead><tr><th>Alumno</th><th>Usuario</th></tr></thead>
+      <tbody >
+        <tr *ngFor="let a of alumnos">
+          <td>{{a.nombre}}</td><td>{{a.usuario}}</td>
+        </tr>
+      </tbody>
+  
+    </table>
+  
+    <br> <br>
+
+    <p (click)="navegarMenu()">Volver</p>

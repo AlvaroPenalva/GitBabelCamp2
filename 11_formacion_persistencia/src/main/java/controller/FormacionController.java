@@ -22,6 +22,7 @@ public class FormacionController {
 	@Autowired
 	FormacionService fs;
 	
+	//He cambiado la ruta para que coincida con el routing de las vistas
 	@PostMapping(value = "menu")
 	public String login(@RequestParam String user, @RequestParam String pwd) {
 		

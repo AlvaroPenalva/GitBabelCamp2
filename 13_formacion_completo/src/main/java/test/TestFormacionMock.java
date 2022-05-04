@@ -88,7 +88,7 @@ public class TestFormacionMock {
 	
 	@Test
 	void testMatricular() {
-		assertTrue(service.matriculaAlumno("user3", 2));
+		assertTrue(service.matricularAlumno("user3", 2));
 		//tras matricular al alumno en un nuevo curso, obtenemos el alumno
 		//y comprobamos que tiene un curso más al creado inicialmente
 		assertEquals(2,service.validarUsuario("user3", "pwd3").getCursos().size());

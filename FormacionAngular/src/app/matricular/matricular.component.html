@@ -1,0 +1,13 @@
+<h1>Alumnos</h1>
+<select [(ngModel)]="alumnoActual">
+  <option name="alumnos" id="alumnos" *ngFor="let a of alumnos" value="{{a.usuario}}">{{a.usuario}}</option>
+</select>
+<input type="button" (click)="busqueda()" value="Buscar Cursos">
+<br><br>
+<h1>Alumnos</h1>
+<select [(ngModel)]="cursoActual">
+  <option name="cursos" id="cursos" *ngFor="let c of cursos" value="{{c.idCurso}}">{{c.nombre}}</option>
+</select>
+<br><br>
+<input type="button" (click)="matricular()" value="Matricular">
+<br><br>

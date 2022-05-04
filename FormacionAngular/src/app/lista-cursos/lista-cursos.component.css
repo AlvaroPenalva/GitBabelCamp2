@@ -1,0 +1,12 @@
+p:hover{
+    cursor: pointer;
+    color: aqua;
+}
+
+#buscador{
+    text-align: center;
+}
+
+table{
+    margin-left: 40%;
+}

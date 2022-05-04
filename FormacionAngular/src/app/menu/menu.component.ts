@@ -21,4 +21,12 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/curso'])
   }
 
+  navegarMatricular(){
+    this.router.navigate(['matricular'])
+  }
+
+  navegarMatriculasFechas(){
+    this.router.navigate(['matriculasFechas'])
+  }
+
 }

@@ -21,7 +21,7 @@ public class TestMatriculacion {
 	
 	@Test
 	void testMatricularAlumno() {
-		fs.matriculaAlumno("aaa", 14);
+		fs.matricularAlumno("aaa", 14);
 		assertEquals(3,fs.cursosdeAlumno("aaa").size());
 	}
 }

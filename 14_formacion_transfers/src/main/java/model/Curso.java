@@ -42,6 +42,7 @@ public class Curso{
 	
 	public Curso(int idCurso, String nombre, int duracion, double precio, Date fechaInicio) {
 		super();
+		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.precio = precio;

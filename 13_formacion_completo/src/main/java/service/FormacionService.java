@@ -12,7 +12,7 @@ public interface FormacionService {
 	List<Curso> cursosdeAlumno(String usuario);
 	List<Curso> listaCursos();
 	List<Alumno> alumnosPorCurso(String nombre);
-	boolean matriculaAlumno(String usuario, int idCurso);
+	boolean matricularAlumno(String usuario, int idCurso);
 	List<Alumno> listaAlumnos();
 	List<Curso> noMatriculado(String usuario);
 	boolean altaAlumno(Alumno a);

@@ -21,7 +21,7 @@ export class ListaAlumnosComponent{
   }
 
   navegarMenu(){
-    this.router.navigate(['/menu'])
+    this.router.navigate(['/Login'])
   }
 
 }

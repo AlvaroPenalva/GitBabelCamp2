@@ -19,7 +19,7 @@ export class ListaCursosComponent{
   busqueda() {
     this.service.buscarCursosAlumno(this.alumnoActual).subscribe(data => this.cursos = data);
   }
-  navegarMenu(){
-    this.router.navigate(['/menu'])
+    navegarMenu(){
+    this.router.navigate(['/Login'])
   }
 }

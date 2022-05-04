@@ -24,54 +24,80 @@ public class FormacionController {
 
 	@Autowired
 	FormacionService fs;
-	
+
 	@PostMapping(value = "Login")
 	public String login(@RequestParam String user, @RequestParam String pwd) {
-		
-		if(fs.validarUsuario(user, pwd) != null) return "inicio";
-		
+
+		if (fs.validarUsuario(user, pwd) != null)
+			return "inicio";
+
 		return "login";
 	}
-	
-	@GetMapping(value= "Cursos",produces = MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(value = "Cursos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Curso> getCursos() {
 		return fs.listaCursos();
 	}
-	
-	@GetMapping(value="Alumnos")
+
+	@GetMapping(value = "Alumnos")
 	public @ResponseBody List<Alumno> getAlumnos() {
 		return fs.listaAlumnos();
 	}
-	
-	@GetMapping(value="BuscarAlumnos")
-	public @ResponseBody List<Alumno> getPorCurso(@RequestParam String nombre){
+
+	@GetMapping(value = "BuscarAlumnos")
+	public @ResponseBody List<Alumno> getPorCurso(@RequestParam String nombre) {
 		return fs.alumnosPorCurso(nombre);
 	}
-	
-	@GetMapping(value="BuscarCursos")
-	public @ResponseBody List<Curso> getPorAlumno(@RequestParam String usuario){
+
+	@GetMapping(value = "BuscarCursos")
+	public @ResponseBody List<Curso> getPorAlumno(@RequestParam String usuario) {
 		return fs.cursosdeAlumno(usuario);
 	}
-	
-	@PostMapping(value="AltaAlumno")
-	public String altaAlumno(@ModelAttribute Alumno a){
-		if(fs.altaAlumno(a)) return "inicio";
-		return "alta";
-	}
-	
-	@PostMapping(value="AltaCurso")
-	public String altaCurso(@ModelAttribute Curso c) {
-		if(fs.altaCurso(c)) return "inicio";
-		else return "alta";
-	}
-	
-	@GetMapping(value="Matriculas",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Curso> matriculas(@RequestParam("fechaIni") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaIni, 
-												@RequestParam("fechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin){
-		
-			return fs.consultarMatriculas(fechaIni, fechaFin);
-		
+
+	@PostMapping(value = "AltaAlumno")
+	public String altaAlumno(@ModelAttribute Alumno a) {
+		if (fs.altaAlumno(a))
+			return "menu";
+		return "error";
 	}
 
-	
+	@PostMapping(value = "AltaCurso")
+	public String altaCurso(@ModelAttribute Curso c) {
+		if (fs.altaCurso(c))
+			return "inicio";
+		else
+			return "alta";
+	}
+
+	@GetMapping(value = "MatriculasPorFecha", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Curso> matriculas(
+			@RequestParam("fechaIni") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaIni,
+			@RequestParam("fechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
+
+		return fs.consultarMatriculas(fechaIni, fechaFin);
+
+	}
+
+	@PostMapping(value = "Matricular")
+	public String matricular(@RequestParam("idCurso") int idCurso, @RequestParam("usuario") String usuario) {
+		fs.matricularAlumno(usuario, idCurso);
+		return "menu";
+	}
+
+	@GetMapping(value = "NoMatriculados", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Curso> matriculas(@RequestParam("usuario") String usuario) {
+		return fs.noMatriculado(usuario);
+
+	}
+
+	@GetMapping(value = "getAltaAlumno")
+	public String getAltaAlumno() {
+		return "altaAlumno";
+	}
+
+	@GetMapping(value = "getAltaCurso")
+	public String getAltaCurso() {
+		return "altaCurso";
+	}
+
 }

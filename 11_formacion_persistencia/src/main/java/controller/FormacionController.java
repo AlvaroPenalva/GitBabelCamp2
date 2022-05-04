@@ -2,6 +2,9 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,12 +26,20 @@ public class FormacionController {
 	FormacionService fs;
 	
 	//He cambiado la ruta para que coincida con el routing de las vistas
-	@PostMapping(value = "menu")
-	public String login(@RequestParam String user, @RequestParam String pwd) {
-		
-		if(fs.validarUsuario(user, pwd) != null) return "menu";
-		
-		return "login";
+	@PostMapping(value = "Login")
+	public String login(@RequestParam("user") String user, 
+			@RequestParam("pwd") String pwd, 
+			HttpSession sesion, 
+			HttpServletRequest request) {
+		Alumno alumno=fs.validarUsuario(user, pwd);
+		if(alumno!=null) {
+			sesion.setAttribute("alumno", alumno);
+			return "menu";
+		}else {
+			request.setAttribute("mensaje", "Usuario y/o contraseña incorrectos");
+			return "login";
+		}
+	
 	}
 	
 	@GetMapping(value= "Cursos",produces = MediaType.APPLICATION_JSON_VALUE)

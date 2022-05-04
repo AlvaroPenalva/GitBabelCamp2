@@ -66,7 +66,7 @@ public class FormacionController {
 		else return "alta";
 	}
 	
-	@GetMapping(value="Matriculas",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="MatriculasPorFecha",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Curso> matriculas(@RequestParam("fechaIni") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaIni, 
 												@RequestParam("fechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin){
 		
@@ -80,5 +80,13 @@ public class FormacionController {
 		return "";
 	}
 
-	
+	@GetMapping(value = "getAltaAlumno")
+	public String getAltaAlumno() {
+		return "altaAlumno";
+	}
+
+	@GetMapping(value = "getAltaCurso")
+	public String getAltaCurso() {
+		return "altaCurso";
+	}
 }

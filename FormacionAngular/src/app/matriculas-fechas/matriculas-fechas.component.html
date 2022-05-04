@@ -1,0 +1,25 @@
+
+<input type="date" value="BuscadorAlumnosCurso" [(ngModel)]="fechaIni" />
+
+<input type="date" value="BuscadorAlumnosCurso" [(ngModel)]="fechaFin" />
+
+<input type="button" value="Buscador Matriculas Por Rango de Fecha" (click)="buscarMatriculas()" />
+
+<h1>Matriculas</h1>
+    <table border="1" *ngIf="matriculas.length > 0">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Fecha de inicio</th>
+          <th>Alumno inscrito</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of matriculas">
+          <td>{{m.cursoDto.nombre}}</td>
+          <td>{{m.cursoDto.fechaInicio}}</td>
+          <td>{{m.alumnoDto.nombre}}</td>
+        </tr>
+      </tbody>
+
+    </table>

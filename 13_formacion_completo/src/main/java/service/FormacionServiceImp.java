@@ -51,7 +51,7 @@ public class FormacionServiceImp implements FormacionService {
 	}
 
 	@Override
-	public boolean matriculaAlumno(String usuario, int idCurso) {
+	public boolean matricularAlumno(String usuario, int idCurso) {
 		Optional<Alumno> auxA = buscarAlumno(usuario);
 		Optional<Curso> auxC = buscarCurso(idCurso);
 		if(auxC.isPresent() && auxC.isPresent()) {
@@ -77,8 +77,7 @@ public class FormacionServiceImp implements FormacionService {
 
 	@Override
 	public List<Curso> noMatriculado(String usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		 return cd.findNotMatriculado(usuario);
 	}
 
 	@Override
@@ -103,5 +102,4 @@ public class FormacionServiceImp implements FormacionService {
 	public List<Curso> consultarMatriculas(Date fechaIni, Date fechaFin) {
 		return cd.findBetweenDates(fechaIni, fechaFin);
 	}
-
 }

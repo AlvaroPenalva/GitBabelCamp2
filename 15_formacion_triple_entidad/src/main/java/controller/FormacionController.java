@@ -31,7 +31,7 @@ public class FormacionController {
 	@PostMapping(value = "Login")
 	public String login(@RequestParam String user, @RequestParam String pwd) {
 		
-		if(fs.validarUsuario(user, pwd) != null) return "altaAlumno";
+		if(fs.validarUsuario(user, pwd) != null) return "menu";
 		
 		return "login";
 	}
@@ -58,13 +58,13 @@ public class FormacionController {
 	
 	@PostMapping(value="AltaAlumno")
 	public String altaAlumno(@ModelAttribute Alumno a){
-		if(fs.altaAlumno(a)) return "inicio";
+		if(fs.altaAlumno(a)) return "menu";
 		return "alta";
 	}
 	
 	@PostMapping(value="AltaCurso")
 	public String altaCurso(@ModelAttribute Curso c) {
-		if(fs.altaCurso(c)) return "inicio";
+		if(fs.altaCurso(c)) return "menu";
 		else return "alta";
 	}
 	

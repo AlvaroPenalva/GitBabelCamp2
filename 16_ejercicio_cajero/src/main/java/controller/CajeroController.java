@@ -29,7 +29,7 @@ public class CajeroController {
 	public String validarCuenta(@RequestParam("idCuenta") int idCuenta, HttpSession sesion,
 			HttpServletRequest request) {
 
-		if (cs.findCuentaById(idCuenta))
+		if (cs.validarCuenta(idCuenta))
 			return "menu";
 		return "login";
 

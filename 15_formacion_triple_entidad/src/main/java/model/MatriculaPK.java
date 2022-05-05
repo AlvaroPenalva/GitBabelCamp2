@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Embeddable;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 @Embeddable
-public class MatriculaPK {
+public class MatriculaPK implements Serializable{
 
 	private int idCurso;
 	private String usuario;

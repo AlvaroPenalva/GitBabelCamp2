@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,8 +15,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="matriculas")
 @Entity
+@Table(name="matriculas")
 public class Matricula {
 
 	@EmbeddedId
@@ -33,7 +31,12 @@ public class Matricula {
 	@JoinColumn(name = "usuario", referencedColumnName = "usuario", insertable = false, updatable = false)
 	Alumno alumno;
 	
-	public Matricula(double nota, Curso curso, Alumno alumno) {
+	public Matricula(int nota) {
+		super();
+		this.nota = nota;
+	}
+    public Matricula( Curso curso, Alumno alumno,double nota) {
+		super();
 		this.nota = nota;
 		this.curso = curso;
 		this.alumno = alumno;

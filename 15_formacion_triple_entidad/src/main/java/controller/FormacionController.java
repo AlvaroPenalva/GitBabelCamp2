@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import dto.AlumnoDto;
+import dto.CursoDto;
 import dto.MatriculaDto;
 import model.Alumno;
 import model.Curso;
@@ -29,28 +31,28 @@ public class FormacionController {
 	@PostMapping(value = "Login")
 	public String login(@RequestParam String user, @RequestParam String pwd) {
 		
-		if(fs.validarUsuario(user, pwd) != null) return "inicio";
+		if(fs.validarUsuario(user, pwd) != null) return "altaAlumno";
 		
 		return "login";
 	}
 	
 	@GetMapping(value= "Cursos",produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Curso> getCursos() {
+	public @ResponseBody List<CursoDto> getCursos() {
 		return fs.listaCursos();
 	}
 	
 	@GetMapping(value="Alumnos")
-	public @ResponseBody List<Alumno> getAlumnos() {
+	public @ResponseBody List<AlumnoDto> getAlumnos() {
 		return fs.listaAlumnos();
 	}
 	
 	@GetMapping(value="BuscarAlumnos")
-	public @ResponseBody List<Alumno> getPorCurso(@RequestParam String nombre){
+	public @ResponseBody List<AlumnoDto> getPorCurso(@RequestParam String nombre){
 		return fs.alumnosPorCurso(nombre);
 	}
 	
 	@GetMapping(value="BuscarCursos")
-	public @ResponseBody List<Curso> getPorAlumno(@RequestParam String usuario){
+	public @ResponseBody List<CursoDto> getPorAlumno(@RequestParam String usuario){
 		return fs.cursosdeAlumno(usuario);
 	}
 	
@@ -67,17 +69,23 @@ public class FormacionController {
 	}
 	
 	@GetMapping(value="MatriculasPorFecha",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Curso> matriculas(@RequestParam("fechaIni") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaIni, 
+	public @ResponseBody List<MatriculaDto> matriculas(@RequestParam("fechaIni") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaIni, 
 												@RequestParam("fechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin){
 		
 			return fs.consultarMatriculas(fechaIni, fechaFin);
 		
 	}
 	
+	@GetMapping(value = "NoMatriculados", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<CursoDto> matriculas(@RequestParam("usuario") String usuario) {
+		return fs.cursosPosiblesMatricularAlumno(usuario);
+
+	}
+	
 	@PostMapping(value="Matricular")
 	public String matricular(@RequestParam("idCurso") int idCurso, @RequestParam("usuario") String usuario) {
 		fs.matricularAlumno(usuario, idCurso);
-		return "";
+		return "Login";
 	}
 
 	@GetMapping(value = "getAltaAlumno")

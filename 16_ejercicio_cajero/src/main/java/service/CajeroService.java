@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import dt.MovimientoDt;
+import model.Cuenta;
 
 public interface CajeroService {
 

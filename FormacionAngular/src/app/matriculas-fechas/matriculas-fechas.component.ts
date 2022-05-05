@@ -20,10 +20,8 @@ export class MatriculasFechasComponent implements OnInit {
   }
 
   buscarMatriculas(){
-    this.service.buscarMatriculas(this.fechaIni, this.fechaFin).subscribe(data =>{
-      this.matriculas = data;
-      console.log(data);
-    });
+    this.service.buscarMatriculas(this.fechaIni, this.fechaFin).subscribe(data => this.matriculas = data);
+    
   }
 
 }

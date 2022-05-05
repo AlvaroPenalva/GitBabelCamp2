@@ -4,5 +4,4 @@ export class Curso {
   duracion!: number;
   precio!: number;
   fechaInicio!: Date;
-
 }

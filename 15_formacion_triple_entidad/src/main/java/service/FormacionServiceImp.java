@@ -18,7 +18,9 @@ import converters.ConversorEntityDto;
 import dao.AlumnosDao;
 import dao.CursosDao;
 import dao.MatriculaDao;
+import dto.AlumnoDto;
 import dto.CursoDto;
+import dto.MatriculaDto;
 import model.Alumno;
 import model.Curso;
 import model.Matricula;
@@ -29,37 +31,35 @@ public class FormacionServiceImp implements FormacionService {
 
 	@Autowired
 	ConversorEntityDto conversor;
-	
 	AlumnosDao ad;
-	
-	
 	CursosDao cd;
-	
 	MatriculaDao md;
 	
-	public FormacionServiceImp(@Autowired AlumnosDao ad, @Autowired CursosDao cd) {
+	public FormacionServiceImp(@Autowired AlumnosDao ad, @Autowired CursosDao cd, @Autowired MatriculaDao md) {
 		this.ad = ad;
 		this.cd = cd;
+		this.md = md;
 	}
 	
 	@Override
-	public Alumno validarUsuario(String usuario, String password) {
-		return ad.findByUsuarioAndPassword(usuario, password);
+	public AlumnoDto validarUsuario(String usuario, String password) {
+		return conversor.alumnoToDto(ad.findByUsuarioAndPassword(usuario, password));
 	}
 
 	@Override
-	public List<Curso> cursosdeAlumno(String usuario) {
-		return cd.findByAlumno(usuario);
+	public List<CursoDto> cursosdeAlumno(String usuario) {
+		return cd.findByAlumno(usuario).stream().map(a -> conversor.cursoToDto(a)).collect(Collectors.toList());
 	}
 
 	@Override
-	public List<Curso> listaCursos() {
-		return cd.findAll();
+	public List<CursoDto> listaCursos() {
+		return cd.findAll().stream().map(a -> conversor.cursoToDto(a)).collect(Collectors.toList());
 	}
 
 	@Override
-	public List<Alumno> alumnosPorCurso(String nombre) {
-		return ad.findByCurso(nombre);
+	public List<AlumnoDto> alumnosPorCurso(String nombre) {
+		return ad.findByCurso(nombre).stream().map(a -> conversor.alumnoToDto(a))
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class FormacionServiceImp implements FormacionService {
 		return cd.findById(idCurso);
 	}
 	
-	public List<Alumno> listaAlumnos(){
-		return ad.findAll();
+	public List<AlumnoDto> listaAlumnos(){
+		return ad.findAll().stream().map(a -> conversor.alumnoToDto(a)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -112,8 +112,11 @@ public class FormacionServiceImp implements FormacionService {
 		return false;
 	}
 	
-	public List<Curso> consultarMatriculas(Date fechaIni, Date fechaFin) {
-		return cd.findBetweenDates(fechaIni, fechaFin);
+	public List<MatriculaDto> consultarMatriculas(Date fechaIni, Date fechaFin) {
+		return md.findMatriculasFechas(fechaIni, fechaFin)
+				.stream()
+				.map(a -> conversor.matriculaToDto(a))
+				.collect(Collectors.toList());
 	}
 
 }

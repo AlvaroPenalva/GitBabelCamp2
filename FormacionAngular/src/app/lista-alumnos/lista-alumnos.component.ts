@@ -17,7 +17,9 @@ export class ListaAlumnosComponent{
     this.service.buscarCursos().subscribe(data => this.cursos = data);
   }
   busqueda() {
-    this.service.buscarAlumnosCurso(this.cursoActual).subscribe(data => this.alumnos = data);
+    this.service.buscarAlumnosCurso(this.cursoActual).subscribe(data =>
+      {this.alumnos = data;
+      console.log(data);} );
   }
 
   navegarMenu(){

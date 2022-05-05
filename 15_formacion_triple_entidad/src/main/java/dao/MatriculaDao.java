@@ -11,7 +11,7 @@ import model.MatriculaPK;
 
 public interface MatriculaDao extends JpaRepository<Matricula, MatriculaPK> {
 
-	@Query("Select m from matricula m where m.cursos.fechaIni between ?1 and ?2")
+	@Query("Select m from Matricula m where m.curso.fechaInicio between ?1 and ?2")
 	List<Matricula> findMatriculasFechas(Date fechaIni, Date fechaFin);
 	
 }

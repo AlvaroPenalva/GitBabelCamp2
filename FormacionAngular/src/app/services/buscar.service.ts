@@ -8,19 +8,19 @@ import { Matricula } from '../model/Matricula';
 })
 export class BuscarService {
 
-  urlAlumnosPorCurso:string="http://localhost:8080/13_formacion_completo/BuscarAlumnos";
+  urlAlumnosPorCurso:string="http://localhost:8080/15_formacion_triple_entidad/BuscarAlumnos";
   //urlAlumnosPorCurso:string="BuscarAlumnos";
-  urlCursosPorAlumno:string ="http://localhost:8080/13_formacion_completo/BuscarCursos";
+  urlCursosPorAlumno:string ="http://localhost:8080/15_formacion_triple_entidad/BuscarCursos";
   //urlCursosPorAlumno:string = "BuscarCursos";
-  urlCursos:string ="http://localhost:8080/13_formacion_completo/Cursos";
+  urlCursos:string ="http://localhost:8080/15_formacion_triple_entidad/Cursos";
   //urlCursos:string = "Cursos";
-  urlAlumnos:string="http://localhost:8080/13_formacion_completo/Alumnos";
+  urlAlumnos:string="http://localhost:8080/15_formacion_triple_entidad/Alumnos";
   //urlAlumnos:string = "Alumnos";
-  urlMatricularAlumno:string = "http://localhost:8080/13_formacion_completo/Matricular"
+  urlMatricularAlumno:string = "http://localhost:8080/15_formacion_triple_entidad/Matricular"
   //urlMatricularAlumno:string = "Matricular"
-  urlCursosNoMatriculado:string = "http://localhost:8080/13_formacion_completo/NoMatriculados"
+  urlCursosNoMatriculado:string = "http://localhost:8080/15_formacion_triple_entidad/NoMatriculados"
   //urlCursosNoMatriculado:string = "NoMatriculados"
-  urlConsultarMatriculasFechas:string = "http://localhost:8080/13_formacion_completo/MatriculasPorFecha"
+  urlConsultarMatriculasFechas:string = "http://localhost:8080/15_formacion_triple_entidad/MatriculasPorFecha"
   //urlConsultarMatriculasFechas:string = "MatriculasPorFecha";
 
   constructor(private http:HttpClient) { }

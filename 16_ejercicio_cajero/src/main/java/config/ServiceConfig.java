@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //Inyectamos el archivo de propiedades
 @PropertySource(value="classpath:/config/application.properties")
 @Configuration //Especifica esta clase como clase de configuracion
-@ComponentScan(basePackages = {"service"}) // escanea todas las clases que se encuentren con la anotacion service para instanciarlas
+@ComponentScan(basePackages = {"service", "converters"}) // escanea todas las clases que se encuentren con la anotacion service para instanciarlas
 @EnableJpaRepositories(basePackages = {"dao"}, entityManagerFactoryRef = "factory", transactionManagerRef = "txManager") // para que nos active las interfaces de jpaRepositories
 //Hay que indicarle tambien el nombre de los encargados de las transacciones y el objeto encargado del acceso a la persistencia
 @EnableTransactionManagement //Habilita la transaccionalidad mediante anotaciones									

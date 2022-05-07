@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +16,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 @Embeddable
-public class TitularPK {
+public class TitularPK implements Serializable{
 
 	private String dni;
 	private int numeroCuenta;

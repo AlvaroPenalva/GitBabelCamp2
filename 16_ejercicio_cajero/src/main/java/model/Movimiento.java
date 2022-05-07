@@ -29,7 +29,7 @@ public class Movimiento {
 	private String operacion;
 	
 	@ManyToOne
-	@JoinColumn(name = "idCuenta", referencedColumnName = "idCuenta", insertable = false, updatable = false)
+	@JoinColumn(name = "idCuenta", referencedColumnName = "numeroCuenta", insertable = false, updatable = false)
 	private Cuenta cuenta;
 	
 	
